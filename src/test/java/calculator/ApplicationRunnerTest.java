@@ -29,7 +29,7 @@ class ApplicationRunnerTest extends NsTest {
     void 빈_문자열을_입력할_경우_0을_반환() {
         assertSimpleTest(() -> {
             run("");
-            assertThat(output()).contains("결과 : 0");
+            assertThat(output()).isEqualTo("덧셈할 문자열을 입력해 주세요." + System.lineSeparator() + "결과 : 0");
         });
     }
 
@@ -37,10 +37,9 @@ class ApplicationRunnerTest extends NsTest {
     void 숫자_하나를_입력할_경우_해당_숫자를_그대로_반환() {
         assertSimpleTest(() -> {
             run("1");
-            assertThat(output()).contains("결과 : 1");
+            assertThat(output()).isEqualTo("덧셈할 문자열을 입력해 주세요." + System.lineSeparator() + "결과 : 1");
         });
     }
-
 
     @Override
     public void runMain() {
