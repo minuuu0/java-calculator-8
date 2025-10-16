@@ -33,6 +33,15 @@ class ApplicationRunnerTest extends NsTest {
         });
     }
 
+    @Test
+    void 숫자_하나를_입력할_경우_해당_숫자를_그대로_반환() {
+        assertSimpleTest(() -> {
+            run("1");
+            assertThat(output()).contains("결과 : 1");
+        });
+    }
+
+
     @Override
     public void runMain() {
         ApplicationRunner.main(new String[]{});

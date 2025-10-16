@@ -5,6 +5,6 @@ public class Calculator {
         if (expression.isBlank()) {
             return 0;
         }
-        throw new IllegalArgumentException();
+        return Integer.parseInt(expression);
     }
 }
