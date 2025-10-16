@@ -21,6 +21,6 @@ public class ApplicationRunner {
     }
 
     public static void main(String[] args) {
-        new ApplicationRunner().run()
+        new ApplicationRunner().run();
     }
 }
