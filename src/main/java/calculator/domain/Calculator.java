@@ -1,10 +1,18 @@
 package calculator.domain;
 
 public class Calculator {
-    public int calculate(String expression) {
+    public long calculate(String expression) {
         if (expression.isBlank()) {
             return 0;
         }
-        return Integer.parseInt(expression);
+
+        String[] numbers = expression.split(",|:");
+
+        long sum = 0;
+        for (String number : numbers) {
+            sum += Long.parseLong(number);
+        }
+
+        return sum;
     }
 }
