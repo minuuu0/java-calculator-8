@@ -43,6 +43,14 @@ class ApplicationRunnerTest extends NsTest {
         });
     }
 
+    @Test
+    void 쉼표와_콜론을_함께_사용하여_숫자들의_합_반환() {
+        assertSimpleTest(() -> {
+            run("1,2:3");
+            assertThat(output()).isEqualTo(expectedOutput(6));
+        });
+    }
+
     private String expectedOutput(int result) {
         return INPUT_PROMPT + System.lineSeparator() + "결과 : " + result;
     }
