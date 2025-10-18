@@ -1,12 +1,12 @@
 package calculator;
 
-import calculator.presentation.ApplicationRunner;
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import calculator.presentation.ApplicationRunner;
+import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Test;
 
 class ApplicationRunnerTest extends NsTest {
     private static final String INPUT_PROMPT = "덧셈할 문자열을 입력해 주세요.";
@@ -40,6 +40,22 @@ class ApplicationRunnerTest extends NsTest {
         assertSimpleTest(() -> {
             run("1");
             assertThat(output()).isEqualTo(expectedOutput(1));
+        });
+    }
+
+    @Test
+    void 쉼표를_구분자로_사용하여_합_반환() {
+        assertSimpleTest(() -> {
+            run("1,2,3");
+            assertThat(output()).isEqualTo(expectedOutput(6));
+        });
+    }
+
+    @Test
+    void 콜론을_구분자로_사용하여_합_반환() {
+        assertSimpleTest(() -> {
+            run("1:2:3");
+            assertThat(output()).isEqualTo(expectedOutput(6));
         });
     }
 
