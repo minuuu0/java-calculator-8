@@ -106,6 +106,19 @@ class ApplicationRunnerTest extends NsTest {
         });
     }
 
+    @ParameterizedTest
+    @CsvSource({
+            "//;",              // //로 시작하지만 \n 없음
+            "//\\n1,2",         // //와 \n 사이에 구분자 없음
+            "//;;\\n1;2"        // //와 \n 사이에 구분자 2개 이상
+    })
+    void 커스텀_구분자_형식_오류(String input) {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(input))
+                        .isExactlyInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     private String expectedOutput(int result) {
         return INPUT_PROMPT + System.lineSeparator() + "결과 : " + result;
     }

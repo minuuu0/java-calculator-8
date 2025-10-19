@@ -31,9 +31,9 @@
 
 #### 2-1. 커스텀 구분자 형식 오류
 
-- [ ] `//`로 시작하지만 `\n`이 없는 경우 → `IllegalArgumentException` 발생
-- [ ] `//`와 `\n` 사이에 구분자가 없는 경우 → `IllegalArgumentException` 발생
-- [ ] `//`와 `\n` 사이에 구분자가 2개 이상인 경우 → `IllegalArgumentException` 발생
+- [x] `//`로 시작하지만 `\n`이 없는 경우 → `IllegalArgumentException` 발생
+- [x] `//`와 `\n` 사이에 구분자가 없는 경우 → `IllegalArgumentException` 발생
+- [x] `//`와 `\n` 사이에 구분자가 2개 이상인 경우 → `IllegalArgumentException` 발생
 
 #### 2-2. 숫자 값 오류
 

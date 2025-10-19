@@ -25,10 +25,14 @@ public class Calculator {
 
         double sum = 0;
         for (String number : inputNumbers.split(delimeter)) {
-            if (number.isEmpty()) {
+            if (number.isBlank()) {
                 continue;  // 연속된 구분자는 0으로 처리 (건너뛰기 = 0 추가와 동일)
             }
-            sum += Double.parseDouble(number);
+            try {
+                sum += Double.parseDouble(number);
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException();
+            }
         }
 
         return sum;
