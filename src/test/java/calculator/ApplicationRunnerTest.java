@@ -83,6 +83,15 @@ class ApplicationRunnerTest extends NsTest {
         });
     }
 
+    @Test
+    void 점을_커스텀_구분자로_사용() {
+        assertSimpleTest(() -> {
+            run("//.\\n1.2.3");
+            assertThat(output()).isEqualTo(expectedOutput(6));
+        });
+    }
+
+
     private String expectedOutput(int result) {
         return INPUT_PROMPT + System.lineSeparator() + "결과 : " + result;
     }

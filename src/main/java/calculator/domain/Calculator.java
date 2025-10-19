@@ -19,7 +19,7 @@ public class Calculator {
         String inputNumbers = expression;
 
         if (matcher.matches()) {
-            delimeter += "|" + matcher.group(1);
+            delimeter += "|" + Pattern.quote(matcher.group(1));
             inputNumbers = matcher.group(2);
         }
 
