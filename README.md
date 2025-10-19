@@ -31,21 +31,21 @@
 
 #### 2-1. 커스텀 구분자 형식 오류
 
-- [ ] `//`로 시작하지만 `\n`이 없는 경우
-- [ ] `//`와 `\n` 사이에 구분자가 없는 경우
-- [ ] `//`와 `\n` 사이에 구분자가 2개 이상인 경우
+- [ ] `//`로 시작하지만 `\n`이 없는 경우 → `IllegalArgumentException` 발생
+- [ ] `//`와 `\n` 사이에 구분자가 없는 경우 → `IllegalArgumentException` 발생
+- [ ] `//`와 `\n` 사이에 구분자가 2개 이상인 경우 → `IllegalArgumentException` 발생
 
 #### 2-2. 숫자 값 오류
 
-- [ ] 음수 입력
-- [ ] `0` 명시적 입력
-- [ ] 숫자 자리에 문자 입력
-- [ ] 구분자만 있고 숫자 없음 (예: `//;\n`)
-- [ ] 커스텀 구분자 `.` + 소수 충돌 (예: `//.\n1.5.2.3`)
+- [ ] 음수 입력 → `IllegalArgumentException` 발생
+- [ ] `0` 명시적 입력 → `IllegalArgumentException` 발생
+- [ ] 숫자 자리에 문자 입력 → `IllegalArgumentException` 발생
+- [ ] 구분자만 있고 숫자 없음 (예: `//;\n`) → `IllegalArgumentException` 발생
+- [ ] 커스텀 구분자 `.` + 소수 충돌 (예: `//.\n1.5.2.3`) → `IllegalArgumentException` 발생
 
 #### 2-3. 범위 초과 오류
 
-- [ ] 입력값이 `double` 범위 초과
-- [ ] 계산 결과가 `double` 범위 초과
+- [ ] 입력값이 `double` 범위 초과 → `IllegalArgumentException` 발생
+- [ ] 계산 결과가 `double` 범위 초과 → `ArithmeticException` 발생
 
 ---
