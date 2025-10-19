@@ -7,6 +7,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import calculator.presentation.ApplicationRunner;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class ApplicationRunnerTest extends NsTest {
     private static final String INPUT_PROMPT = "덧셈할 문자열을 입력해 주세요.";
@@ -91,8 +93,24 @@ class ApplicationRunnerTest extends NsTest {
         });
     }
 
+    @ParameterizedTest
+    @CsvSource({
+            "'1,,3', 4",
+            "'1.5,2.3', 3.8",
+            "'1,2.5,3', 6.5"
+    })
+    void 특수_케이스_처리(String input, String expected) {
+        assertSimpleTest(() -> {
+            run(input);
+            assertThat(output()).contains("결과 : " + expected);
+        });
+    }
 
     private String expectedOutput(int result) {
+        return INPUT_PROMPT + System.lineSeparator() + "결과 : " + result;
+    }
+
+    private String expectedOutput(double result) {
         return INPUT_PROMPT + System.lineSeparator() + "결과 : " + result;
     }
 

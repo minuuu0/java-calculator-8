@@ -7,7 +7,7 @@ public class Calculator {
 
     static final String REGEX = "//(.)\n(.*)";
 
-    public long calculate(String expression) {
+    public double calculate(String expression) {
         if (expression.isBlank()) {
             return 0;
         }
@@ -23,9 +23,12 @@ public class Calculator {
             inputNumbers = matcher.group(2);
         }
 
-        long sum = 0;
+        double sum = 0;
         for (String number : inputNumbers.split(delimeter)) {
-            sum += Long.parseLong(number);
+            if (number.isEmpty()) {
+                continue;  // 연속된 구분자는 0으로 처리 (건너뛰기 = 0 추가와 동일)
+            }
+            sum += Double.parseDouble(number);
         }
 
         return sum;

@@ -16,7 +16,7 @@ public class ApplicationRunner {
 
     public void run() {
         String inputString = input.readExpression();
-        long result = calculator.calculate(inputString);
+        double result = calculator.calculate(inputString);
         output.printResult(result);
     }
 
