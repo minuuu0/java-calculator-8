@@ -75,6 +75,14 @@ class ApplicationRunnerTest extends NsTest {
         });
     }
 
+    @Test
+    void 숫자를_커스텀_구분자로_사용() {
+        assertSimpleTest(() -> {
+            run("//7\\n172737");
+            assertThat(output()).isEqualTo(expectedOutput(6));
+        });
+    }
+
     private String expectedOutput(int result) {
         return INPUT_PROMPT + System.lineSeparator() + "결과 : " + result;
     }
