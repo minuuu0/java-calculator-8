@@ -30,8 +30,9 @@ public class Calculator {
             }
             try {
                 double value = Double.parseDouble(number);
+                validateInputRange(value);
                 validateNumber(value);
-                sum += value;
+                sum = addWithOverflowCheck(sum, value);
             } catch (NumberFormatException e) {
                 throw new IllegalArgumentException();
             }
@@ -44,5 +45,19 @@ public class Calculator {
         if (value <= 0) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private void validateInputRange(double value) {
+        if (Double.isInfinite(value)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private double addWithOverflowCheck(double sum, double value) {
+        double result = sum + value;
+        if (Double.isInfinite(result)) {
+            throw new ArithmeticException();
+        }
+        return result;
     }
 }

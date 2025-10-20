@@ -133,6 +133,22 @@ class ApplicationRunnerTest extends NsTest {
         );
     }
 
+    @Test
+    void 입력값이_double_범위를_초과하면_IllegalArgumentException_반환() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1e309"))
+                        .isExactlyInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 계산_결과가_double_범위를_초과하면_ArithmeticException_반환() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1.7e308,1.7e308"))
+                        .isExactlyInstanceOf(ArithmeticException.class)
+        );
+    }
+
     private String expectedOutput(int result) {
         return INPUT_PROMPT + System.lineSeparator() + "결과 : " + result;
     }

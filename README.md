@@ -43,7 +43,7 @@
 
 #### 2-3. 범위 초과 오류
 
-- [ ] 입력값이 `double` 범위 초과 → `IllegalArgumentException` 발생
-- [ ] 계산 결과가 `double` 범위 초과 → `ArithmeticException` 발생
+- [x] 입력값이 `double` 범위 초과 → `IllegalArgumentException` 발생
+- [x] 계산 결과가 `double` 범위 초과 → `ArithmeticException` 발생
 
 ---
