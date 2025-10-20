@@ -70,7 +70,7 @@ class ApplicationRunnerTest extends NsTest {
     }
 
     @Test
-    void 일반_문자를_커스텀_구분자로_사용() {
+    void 일반_문자를_커스텀_구분자로_사용하여_숫자들의_합_반환() {
         assertSimpleTest(() -> {
             run("//;\\n1;2;3");
             assertThat(output()).isEqualTo(expectedOutput(6));
@@ -78,7 +78,7 @@ class ApplicationRunnerTest extends NsTest {
     }
 
     @Test
-    void 숫자를_커스텀_구분자로_사용() {
+    void 숫자를_커스텀_구분자로_사용하여_숫자들의_합_반환() {
         assertSimpleTest(() -> {
             run("//7\\n172737");
             assertThat(output()).isEqualTo(expectedOutput(6));
@@ -86,7 +86,7 @@ class ApplicationRunnerTest extends NsTest {
     }
 
     @Test
-    void 점을_커스텀_구분자로_사용() {
+    void 점을_커스텀_구분자로_사용하여_숫자들의_합_반환() {
         assertSimpleTest(() -> {
             run("//.\\n1.2.3");
             assertThat(output()).isEqualTo(expectedOutput(6));
@@ -97,9 +97,10 @@ class ApplicationRunnerTest extends NsTest {
     @CsvSource({
             "'1,,3', 4",
             "'1.5,2.3', 3.8",
-            "'1,2.5,3', 6.5"
+            "'1,2.5,3', 6.5",
+            "//;\\n, 0"
     })
-    void 특수_케이스_처리(String input, String expected) {
+    void 특수_케이스_처리하여_숫자들의_합_반환(String input, String expected) {
         assertSimpleTest(() -> {
             run(input);
             assertThat(output()).contains("결과 : " + expected);
@@ -112,7 +113,7 @@ class ApplicationRunnerTest extends NsTest {
             "//\\n1,2",         // //와 \n 사이에 구분자 없음
             "//;;\\n1;2"        // //와 \n 사이에 구분자 2개 이상
     })
-    void 커스텀_구분자_형식_오류(String input) {
+    void 커스텀_구분자_형식_오류가_발생하면_IllegalArgumentException_반환(String input) {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException(input))
                         .isExactlyInstanceOf(IllegalArgumentException.class)
@@ -120,10 +121,6 @@ class ApplicationRunnerTest extends NsTest {
     }
 
     private String expectedOutput(int result) {
-        return INPUT_PROMPT + System.lineSeparator() + "결과 : " + result;
-    }
-
-    private String expectedOutput(double result) {
         return INPUT_PROMPT + System.lineSeparator() + "결과 : " + result;
     }
 
