@@ -4,7 +4,6 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import calculator.presentation.ApplicationRunner;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -142,6 +141,6 @@ class ApplicationRunnerTest extends NsTest {
 
     @Override
     public void runMain() {
-        ApplicationRunner.main(new String[]{});
+        Application.main(new String[]{});
     }
 }
