@@ -98,7 +98,10 @@ class ApplicationRunnerTest extends NsTest {
             "'1,,3', 4",
             "'1.5,2.3', 3.8",
             "'1,2.5,3', 6.5",
-            "//;\\n, 0"
+            "//;\\n, 0",
+            "'//;\\n1,2;3', 6",
+            "'//*\\n1*2*3', 6",
+            "'//;\\n1;2\\n;3', 6"
     })
     void 특수_케이스_처리하여_숫자들의_합_반환(String input, String expected) {
         assertSimpleTest(() -> {
@@ -111,7 +114,7 @@ class ApplicationRunnerTest extends NsTest {
     @CsvSource({
             "//;",              // //로 시작하지만 \n 없음
             "//\\n1,2",         // //와 \n 사이에 구분자 없음
-            "//;;\\n1;2"        // //와 \n 사이에 구분자 2개 이상
+            "//;;\\n1;;2"        // //와 \n 사이에 구분자 2개 이상
     })
     void 커스텀_구분자_형식_오류가_발생하면_IllegalArgumentException_반환(String input) {
         assertSimpleTest(() ->

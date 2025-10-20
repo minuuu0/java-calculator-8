@@ -13,7 +13,7 @@ public class Calculator {
         }
 
         expression = expression.replace("\\n", "\n");
-        Matcher matcher = Pattern.compile(REGEX).matcher(expression);
+        Matcher matcher = Pattern.compile(REGEX, Pattern.DOTALL).matcher(expression);
 
         String delimeter = ",|:";
         String inputNumbers = expression;
