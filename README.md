@@ -37,9 +37,9 @@
 
 #### 2-2. 숫자 값 오류
 
-- [ ] 음수 입력 → `IllegalArgumentException` 발생
-- [ ] `0` 명시적 입력 → `IllegalArgumentException` 발생
-- [ ] 숫자 자리에 문자 입력 → `IllegalArgumentException` 발생
+- [x] 음수 입력 → `IllegalArgumentException` 발생
+- [x] `0` 명시적 입력 → `IllegalArgumentException` 발생
+- [x] 숫자 자리에 문자 입력 → `IllegalArgumentException` 발생
 
 #### 2-3. 범위 초과 오류
 

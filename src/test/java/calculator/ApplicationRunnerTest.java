@@ -120,6 +120,19 @@ class ApplicationRunnerTest extends NsTest {
         );
     }
 
+    @ParameterizedTest
+    @CsvSource({
+            "-1,2,3",
+            "0",
+            "a,2,3",
+    })
+    void 숫자_값_오류가_발생하면_IllegalArgumentException_반환(String input) {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(input))
+                        .isExactlyInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     private String expectedOutput(int result) {
         return INPUT_PROMPT + System.lineSeparator() + "결과 : " + result;
     }

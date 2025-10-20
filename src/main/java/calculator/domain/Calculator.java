@@ -26,15 +26,23 @@ public class Calculator {
         double sum = 0;
         for (String number : inputNumbers.split(delimeter)) {
             if (number.isBlank()) {
-                continue;  // 연속된 구분자는 0으로 처리 (건너뛰기 = 0 추가와 동일)
+                continue;
             }
             try {
-                sum += Double.parseDouble(number);
+                double value = Double.parseDouble(number);
+                validateNumber(value);
+                sum += value;
             } catch (NumberFormatException e) {
                 throw new IllegalArgumentException();
             }
         }
 
         return sum;
+    }
+
+    private void validateNumber(double value) {
+        if (value <= 0) {
+            throw new IllegalArgumentException();
+        }
     }
 }
